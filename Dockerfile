@@ -1,5 +1,5 @@
 
-FROM debian:jessie
+FROM nodesource/jessie:0.12.7
 
 MAINTAINER Gabor Raz
 RUN apt-get update
@@ -17,8 +17,6 @@ RUN locale-gen en_US.UTF-8
 RUN export LANG=en_US.UTF-8
 RUN export LANGUAGE=en_US:en
 RUN export LC_ALL=en_US.UTF-8
-RUN curl -sL https://deb.nodesource.com/setup_6.x | -E bash -
-RUN apt-get install -y nodejs
 RUN npm install node-gyp -g
 RUN curl https://install.meteor.com/ | sh
 RUN apt-get install -y openssh-client
