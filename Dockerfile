@@ -4,9 +4,12 @@ FROM nodesource/jessie:0.12.7
 MAINTAINER Gabor Raz
 RUN apt-get update
 RUN apt-get update >/dev/null
+RUN apt-get install -y wget
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+
 RUN apt-get install -y git
 RUN apt-get install -y curl
-RUN apt-get install -y wget
+
 RUN apt-get install -y build-essential
 RUN apt-get install -y python
 RUN apt-get install -y make
@@ -31,7 +34,6 @@ RUN curl -o /var/tmp/firefox-45.4.0esr.tar.bz2 https://ftp.mozilla.org/pub/firef
 RUN tar xvfj /var/tmp/firefox-45.4.0esr.tar.bz2
 RUN ln -s /firefox/firefox-bin /usr/bin/firefox
 
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 RUN apt-get update
 RUN apt-get install libxpm4 libxrender1 libgtk2.0-0 libnss3 libgconf-2-4
 RUN apt-get install google-chrome-stable
